@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,6 +32,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  bool _reversed = false;
+
+  List<UniqueKey> _buttonkeys = [UniqueKey(), UniqueKey()];
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -59,8 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              margin: const EdgeInsets.only(bottom: 50.0),
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.50),
+                  borderRadius: BorderRadius.circular(10.0)),
+              child: Image.asset(
+                'images/logo.png',
+                width: 300,
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(
               '$_counter',
@@ -111,3 +128,42 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+//
+// class FancyButton extends StatefulWidget {
+//   final VoidCallback onPresssed;
+//   final Widget child;
+//
+//
+//   const FancyButton({Key? key, required this.onPresssed, required this.child}) : super(key: key);
+//
+//   @override
+//   _FancyButtonState createState() => _FancyButtonState();
+// }
+//
+// class _FancyButtonState extends State<FancyButton> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: ElevatedButton(
+//         color: _getColors(),
+//         child: widget.child,
+//         onPressed: widget.onPresssed,
+//       ),
+//     );
+//   }
+//   Color _getColors(){
+//     return _buttonColors.putIfAbsent(this, () => colors[next(0,5)]);
+//   }
+// }
+//
+// Map<_FancyButtonState, Color> _buttonColors = ();
+// final _random = Random();
+// int next(int min, int masx) => min + _random.nextInt(max - min);
+// List<Color> colors = [
+//   Colors.blue,
+//   Colors.green,
+//   Colors.orange,
+//   Colors.purple,
+//   Colors.amber,
+//   Colors.lightBlue,
+// ];
